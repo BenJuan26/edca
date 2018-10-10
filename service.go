@@ -17,8 +17,9 @@ import (
 )
 
 const (
-	svcName = "elite-dangerous-cockpit-companion"
-	svcDesc = "Elite Dangerous Cockpit Companion"
+	svcName     = "edca"
+	svcDispName = "Elite Dangerous Cockpit Agent"
+	svcDesc     = "Feeds the cockpit information and keeps its state in sync with the game state"
 )
 
 var elog debug.Log
@@ -99,7 +100,7 @@ func main() {
 	case "configure":
 		err = interactiveConfig()
 	case "install":
-		err = installService(svcName, svcDesc)
+		err = installService(svcName, svcDispName, svcDesc)
 	case "remove":
 		err = removeService(svcName)
 	case "start":
@@ -217,7 +218,7 @@ func exePath() (string, error) {
 	return "", err
 }
 
-func installService(name, desc string) error {
+func installService(name, dispName, desc string) error {
 	exepath, err := exePath()
 	if err != nil {
 		return err
@@ -238,7 +239,7 @@ func installService(name, desc string) error {
 		s.Close()
 		return fmt.Errorf("service %s already exists", name)
 	}
-	s, err = m.CreateService(name, exepath, mgr.Config{DisplayName: desc}, "is", "auto-started")
+	s, err = m.CreateService(name, exepath, mgr.Config{DisplayName: dispName, Description: desc}, "is", "auto-started")
 	if err != nil {
 		return err
 	}
