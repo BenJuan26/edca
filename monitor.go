@@ -138,7 +138,7 @@ func checkStatusAndUpdate() error {
 
 		info := controllerInfo{
 			Timestamp:  status.Timestamp,
-			Flags:      status.Flags,
+			Flags:      status.RawFlags,
 			Pips:       status.Pips,
 			FireGroup:  status.FireGroup,
 			StarSystem: system,
