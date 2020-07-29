@@ -17,7 +17,7 @@ go build
 
 ## Usage
 
-First, set up the configuration file. Either copy/rename `config-sample.json` and fill in the values appropriately, or use the interactive config by running `edca.exe configure`. The interactive config will prompt for the config values and will look like this:
+First, set up the configuration file. Either copy/rename `config-sample.json` to `config.json` and fill in the values appropriately, or use the interactive config by running `edca.exe configure`. The interactive config will prompt for the config values and will look like this:
 
 ```
 #  Device ID                Max Baud Rate  Description
